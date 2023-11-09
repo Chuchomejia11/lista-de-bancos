@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { loadBanks } from '@/redux/slices/sliceBanks';
-import './bankList.css'; // Importa el archivo de estilos CSS
+import './banklist.css';
 import { setDisplayedBank } from '@/redux/slices/sliceBankDisplayed';
 import { BankCard } from '@/components/information/bankCard/BankCard';
 
