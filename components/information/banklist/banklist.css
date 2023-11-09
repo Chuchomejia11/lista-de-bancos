@@ -1,0 +1,33 @@
+.bank-list-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  
+  .bank-card {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  .bank-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .bank-name {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .view-more-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
