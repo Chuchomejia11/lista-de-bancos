@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { loadBanks } from '@/redux/slices/sliceBanks';
+import './banklist.css';
+import { setDisplayedBank } from '@/redux/slices/sliceBankDisplayed';
+import { BankCard } from '@/components/information/bankCard/BankCard';
 
 type Bank = {
   bankName: string;
@@ -13,13 +16,19 @@ type Bank = {
 export const BankList: React.FC = () => {
   const dispatchEvent = useDispatch();
   const BankList = useSelector((state: RootState) => state.banks.listBanks);
+  const [ selectedBank, setSelectedBank ] = useState<Bank | null>(null);
 
   useEffect(() => {
     if (BankList.length === 0) {
-      const apiUrl = 'https://cors-anywhere.herokuapp.com/https://dev.obtenmas.com/catom/api/challenge/banks';
-      
-      fetch(apiUrl) // Realiza la solicitud a través de CORS Anywhere
-        .then((response) => response.json())
+      const apiUrl = '/api/banks';
+
+      fetch(apiUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
         .then((data: Bank[]) => {
           dispatchEvent(loadBanks(data));
         })
@@ -27,21 +36,29 @@ export const BankList: React.FC = () => {
           console.error('Error fetching banks:', error);
         });
     }
-  }, [dispatchEvent, BankList]);
+  }, [ dispatchEvent, BankList ]);
 
   return (
     <div>
-      <h1>Lista de Bancos</h1>
-      <ul>
+      <div className="bank-list-container">
         {BankList.map((bank: any) => (
-          <div key={bank.description}>
-            <h3>{bank.bankName}</h3>
-            <p>{bank.description}</p>
-            <p>Edad: {bank.age}</p>
-            <img src={bank.url} alt={bank.bankName} />
+          <div key={bank.description} className="bank-card">
+            <img src={bank.url} alt={bank.bankName} className="bank-image" />
+            <h3 className="bank-name">{bank.bankName}</h3>
+            <button
+              className="view-more-button"
+              onClick={() => {
+                setSelectedBank(bank);
+                dispatchEvent(setDisplayedBank(bank));
+              }}
+            >
+              Ver más
+            </button>
           </div>
         ))}
-      </ul>
+
+      </div>
+      {selectedBank && <BankCard bank={selectedBank} />}
     </div>
   );
 };

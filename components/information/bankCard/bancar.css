@@ -1,0 +1,19 @@
+.bank-card-displayed {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+  }
+  
+  .bank-image-column {
+    flex: 0 0 100px; /* Tamaño fijo de la columna de imágenes (ajusta según tus preferencias) */
+  }
+  
+  .bank-image {
+    width: 100%; /* Ajusta el tamaño de la imagen para llenar la columna */
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .bank-data-column {
+    flex: 1; /* La columna de datos ocupa el espacio restante */
+    padding-left: 20px; /* Espacio entre la columna de imágenes y la de datos */
+  }

@@ -1,17 +1,15 @@
 // redux/store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import sliceBanks from './slices/sliceBanks';
-
+import sliceBankDisplayed from './slices/sliceBankDisplayed';
 const store = configureStore({
   reducer: {
     banks: sliceBanks,
-    // Otros reducers si los tienes
+    bankDisplayed: sliceBankDisplayed,
+    
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 
-// Exporta RootState como una exportación de miembro
-
-
-export default store; // Mantiene store como una exportación predeterminada
+export default store; 
