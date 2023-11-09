@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
           <meta name="author" content="J. Jesús Mejia M." />
           
         </Head>
-        <h1>Bienvenido a mi aplicación</h1>
+        <h1>Elige el banco del que quieres mas informacion</h1>
         <BankList />
       </div>
     </Provider>
