@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 
@@ -14,7 +15,7 @@ export const BankCard: React.FC<BankCardProps> = ({ bank }) => {
     return (
         <div className="bank-card-displayed">
             <div className="bank-image-column">
-                <img src={bank.url} alt={bank.bankName} className="bank-image" />
+                <Image src={bank.url} alt={bank.bankName} className="bank-image" />
             </div>
             <div className="bank-data-column">
                 <h3>{bank.bankName}</h3>
