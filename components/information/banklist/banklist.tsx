@@ -5,7 +5,7 @@ import { loadBanks } from '@/redux/slices/sliceBanks';
 import './banklist.css';
 import { setDisplayedBank } from '@/redux/slices/sliceBankDisplayed';
 import { BankCard } from '@/components/information/bankCard/BankCard';
-import {Card, CardBody} from "@nextui-org/react";
+import {Card, CardBody, Image} from "@nextui-org/react";
 
 type Bank = {
   bankName: string;
@@ -46,7 +46,7 @@ export const BankList: React.FC = () => {
           <Card key={bank.description}>
             <CardBody>
             <div>
-            <img src={bank.url} alt={bank.bankName} className="bank-image" />
+            <Image src={bank.url} alt={bank.bankName} className="bank-image" />
             <h3 className="bank-name">{bank.bankName}</h3>
             <button
               className="view-more-button"
