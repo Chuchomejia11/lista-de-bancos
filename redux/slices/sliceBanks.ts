@@ -1,8 +1,14 @@
 // redux/slices/bankSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+type Bank = {
+    bankName: string;
+    description: string;
+    age: number;
+    url: string;
+  };
 interface ListBanks {
-    listBanks: any;
+    listBanks: Bank[]
 }
 
 const initialState: ListBanks = {
