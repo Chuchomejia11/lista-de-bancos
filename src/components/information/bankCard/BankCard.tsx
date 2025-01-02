@@ -1,5 +1,6 @@
-import { Box, Image, Text, Button } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import { Box, Image, Text, Button, useDisclosure } from '@chakra-ui/react';
+import React, { use, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 type BankCardProps = {
     bank: {
@@ -11,11 +12,10 @@ type BankCardProps = {
 };
 
 export const BankCard: React.FC<BankCardProps> = ({ bank,  }) => {
-    const [isSelected, setIsSelected] = useState(false);
-
-
+    const [isSelected, setIsSelected] = useState(false)
+    const dispatch =  useDispatch()
     const handleSelectBank = () => {
-        console.log('selectedbank')
+        console.log('selectedbank', bank)
     };
 
     return (
@@ -56,7 +56,7 @@ export const BankCard: React.FC<BankCardProps> = ({ bank,  }) => {
                 {bank.bankName}
             </Text>
             <Button
-                onClick={()=>console.log('set')}
+                onClick={handleSelectBank}
                 colorScheme={isSelected ? "red" : "blue"}
             >
                 {isSelected ? "Deseleccionar" : "Ver más"}
